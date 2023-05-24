@@ -1,0 +1,10 @@
+5/24/2023 6:42:51 PM	This log contains information about the import schema operation into project 'sqlproject' on computer 'DINESH' by user 'dines'.
+5/24/2023 6:42:52 PM	Deserializing model
+5/24/2023 6:42:52 PM	Resolving model
+5/24/2023 6:42:52 PM	Visiting imported model for types
+5/24/2023 6:42:52 PM	Scanning project for duplicate elements
+5/24/2023 6:42:52 PM	Finished duplicate element processing
+5/24/2023 6:42:52 PM	Processing extra files
+5/24/2023 6:42:52 PM	Finished importing Data-tier Application file.
+5/24/2023 6:42:52 PM	A summary of the import was saved to the following location: C:\Users\dines\source\repos\sqlproject\sqlproject\Import Schema Logs\sqlproject_20230524011251.log
+5/24/2023 6:42:53 PM	Click Finish to continue...
