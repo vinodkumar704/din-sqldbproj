@@ -36,4 +36,8 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: DACPAC
-          path: ${{ github.workspace }}/sqlproject/bin/Release/*.dacpac 
+          path: ${{ github.workspace }}/sqlproject/bin/Release/*.dacpac
+          
+      - name: List Build Directory Contents
+        run: |
+            Get-ChildItem -Path ${{ github.workspace }}/sqlproject/bin/Release/ -Recurse
