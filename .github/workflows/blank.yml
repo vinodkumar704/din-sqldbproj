@@ -43,11 +43,12 @@ jobs:
           $sourcePath = "sqlproject/sqlproject/bin/Release/"
          # $destinationPath = "${{ github.workspace }}/artifacts/"
          # Copy-Item -Path $sourcePath -Destination $destinationPath
-     # - name: Upload Build Artifacts
-     #   uses: actions/upload-artifact@v2
-     #   with:
-     #     name: DACPAC-Artifacts
-     #     path: ${{ github.workspace }}/artifacts/
+      - name: Upload Build Artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: DACPAC-Artifacts
+          path: ${{ github.workspace }}/artifacts
+     
      # - name: Upload Artifacts
      #   uses: actions/upload-artifact@v2
      #   with:
