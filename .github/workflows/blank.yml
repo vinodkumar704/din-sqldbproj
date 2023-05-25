@@ -39,4 +39,4 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: DACPAC-Artifacts
-          path: (Join-Path ${{ github.workspace }} 'artifacts')
+          path: ${{ github.workspace }}\artifacts\
