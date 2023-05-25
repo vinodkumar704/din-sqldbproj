@@ -32,8 +32,8 @@ jobs:
       - name: Build Database project
         run: |
           msbuild.exe sqlproject/sqlproject.sln /p:Configuration=Release
-      # Publish artifact
-      - uses: actions/upload-artifact@v3.1.2
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v2
         with:
-          name: AzureSQLDB
-          path: ${{ github.workspace }}/bin/Release/ 
+          name: DACPAC
+          path: ${{ github.workspace }}/sqlproject/bin/Release/*.dacpac 
