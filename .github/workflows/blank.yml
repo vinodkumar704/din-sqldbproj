@@ -32,17 +32,20 @@ jobs:
       - name: Build Database project
         run: |
           msbuild.exe sqlproject/sqlproject.sln /p:Configuration=Release
-      - name: Copy Artifacts
+      - name: Create Artifacts Directory
         run: |
-          $sourcePath = "${{ github.workspace }}/sqlproject/bin/Release/*.dacpac"
-          $destinationPath = "${{ github.workspace }}/artifacts/"
-          #New-Item -ItemType Directory -Force -Path $destinationPath
-          #Copy-Item -Path $sourcePath -Destination $destinationPath
-      - name: Upload Build Artifacts
-        uses: actions/upload-artifact@v2
-        with:
-          name: DACPAC-Artifacts
-          path: ${{ github.workspace }}/artifacts/
+          New-Item -ItemType Directory -Force -Path "${{ github.workspace }}/artifacts/"
+     # - name: Copy Artifacts
+     #   run: |
+     #     $sourcePath = "${{ github.workspace }}/sqlproject/bin/Release/*.dacpac"
+     #     $destinationPath = "${{ github.workspace }}/artifacts/"
+     #     #New-Item -ItemType Directory -Force -Path $destinationPath
+     #     #Copy-Item -Path $sourcePath -Destination $destinationPath
+     # - name: Upload Build Artifacts
+     #   uses: actions/upload-artifact@v2
+     #   with:
+     #     name: DACPAC-Artifacts
+     #     path: ${{ github.workspace }}/artifacts/
      # - name: Upload Artifacts
      #   uses: actions/upload-artifact@v2
      #   with:
