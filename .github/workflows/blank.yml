@@ -40,7 +40,7 @@ jobs:
      #     New-Item -ItemType Directory -Force -Path "${{ github.workspace }}/artifacts/"
       - name: Copy Artifacts
         run: |
-          $sourcePath = "sqlproject/sqlproject/bin/Release/"
+          $sourcePath = "sqlproject\sqlproject\bin\Release"
           $destinationPath = ${{ github.workspace }}/artifacts
          # Copy-Item -Path $sourcePath -Destination $destinationPath
       - name: Upload Build Artifacts
