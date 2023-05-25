@@ -35,12 +35,11 @@ jobs:
       - name: Create Artifacts Directory
         run: |
           New-Item -ItemType Directory -Force -Path "${{ github.workspace }}/artifacts/"
-     # - name: Copy Artifacts
-     #   run: |
-     #     $sourcePath = "${{ github.workspace }}/sqlproject/bin/Release/*.dacpac"
-     #     $destinationPath = "${{ github.workspace }}/artifacts/"
-     #     #New-Item -ItemType Directory -Force -Path $destinationPath
-     #     #Copy-Item -Path $sourcePath -Destination $destinationPath
+      - name: Copy Artifacts
+        run: |
+          $sourcePath = "${{ github.workspace }}/sqlproject/bin/Release/*.dacpac"
+          $destinationPath = "${{ github.workspace }}/artifacts/"
+     #     Copy-Item -Path $sourcePath -Destination $destinationPath
      # - name: Upload Build Artifacts
      #   uses: actions/upload-artifact@v2
      #   with:
