@@ -28,13 +28,13 @@ jobs:
             uses: warrenbuckley/Setup-MSBuild@v1
          - name: Build database project
           working-directory: src
-          run: MSBuild.exe WestWind/WestWind.sqlproj
+          run: MSBuild.exe sqlproject/sqlproject/sqlproject.sqlproj
 
    #publish build artifact (dacpac) back to github
 
-   - name: publish build artifacts back to GitHub
-     uses: actions/upload-artifact@master
-     with:
-     name: db
-     path: src\WestWind\bin\Debug\WestWind.dacpac
+   #- name: publish build artifacts back to GitHub
+   #  uses: actions/upload-artifact@master
+   #  with:
+   #  name: db
+   #  path: src\WestWind\bin\Debug\WestWind.dacpac
 
