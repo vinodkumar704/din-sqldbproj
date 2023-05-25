@@ -43,6 +43,10 @@ jobs:
           $sourcePath = "${{ github.workspace }}\sqlproject\sqlproject\bin\Release"
           $destinationPath = "${{ github.workspace }}\artifacts"
           Copy-Item -Path $sourcePath -Destination $destinationPath
+          
+      - name: List Artifacts Content
+        run: |
+          Get-ChildItem -Path "${{ github.workspace }}\artifacts" -Recurse
       - name: Upload Build Artifacts
         uses: actions/upload-artifact@v2
         with:
