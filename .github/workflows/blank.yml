@@ -38,5 +38,5 @@ jobs:
       - name: Upload Build Artifacts
         uses: actions/upload-artifact@v2
         with:
-          name: Artifacts
+          name: Dacpaclogs
           path: ${{ github.workspace }}\artifacts\
