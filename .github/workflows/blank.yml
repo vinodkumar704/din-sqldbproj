@@ -1,64 +1,42 @@
-# This is a basic workflow to help you get started with Actions
-
 name: CI
 
-# Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
-
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
   build:
-    # The type of runner that the job will run on
     runs-on: windows-2019
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
-
-    # Find msbuild
+      
       - name: Add msbuild to PATH
         uses: microsoft/setup-msbuild@v1.3.1
-      # create dacpac using MSBUILD
+        
       - name: Build Database project
         run: |
           msbuild.exe sqlproject/sqlproject.sln /p:Configuration=Release
-     # - name: List Directory Content
-     #   run: |
-     #    Get-ChildItem -Path "${{ github.workspace }}sqldbproj\sqldbproj\sqlproject\sqlproject\bin\Release\"
+          
       - name: Create Artifacts Directory
         run: |
-          New-Item -ItemType Directory -Force -Path ${{ github.workspace }}\artifacts
+          New-Item -ItemType Directory -Force -Path (Join-Path ${{ github.workspace }} 'artifacts')
+          
       - name: Copy Artifacts
         run: |
           $sourcePath = "${{ github.workspace }}\sqlproject\sqlproject\bin\Release"
-          $destinationPath = "${{ github.workspace }}\artifacts"
-          Copy-Item -Path $sourcePath -Destination $destinationPath
+          $destinationPath = (Join-Path ${{ github.workspace }} 'artifacts')
+          Copy-Item -Path "$sourcePath\*" -Destination $destinationPath -Recurse -Force
           
       - name: List Artifacts Content
         run: |
-          Get-ChildItem -Path "${{ github.workspace }}\artifacts" -Recurse
+          Get-ChildItem -Path (Join-Path ${{ github.workspace }} 'artifacts') -Recurse
+          
       - name: Upload Build Artifacts
         uses: actions/upload-artifact@v2
         with:
           name: DACPAC-Artifacts
-          path: "${{ github.workspace }}\artifacts"
-     
-     # - name: Upload Artifacts
-     #   uses: actions/upload-artifact@v2
-     #   with:
-     #     name: DACPAC
-     #    path: ${{ github.workspace }}/sqlproject/*.dacpac
-          
-      #- name: List Build Directory Contents
-      #  run: |
-      #      Get-ChildItem -Path "${{ github.workspace }}/sqlproject/bin/Release/" -Recurse
+          path: (Join-Path ${{ github.workspace }} 'artifacts')
