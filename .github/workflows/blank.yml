@@ -6,9 +6,9 @@ name: CI
 on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
  # push:
-  #  branches: [ "main" ]
+  #  branches: [ "dev" ]
   #pull_request:
-  #  branches: [ "main" ]
+  #  branches: [ "dev" ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -24,37 +24,17 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
+          - name: Setup MSBuild.exe
+            uses: warrenbuckley/Setup-MSBuild@v1
+         - name: Build database project
+          working-directory: src
+          run: MSBuild.exe WestWind/WestWind.sqlproj
 
-    # Find msbuild
-      - name: Add msbuild to PATH
-        uses: microsoft/setup-msbuild@v1.3.1
-      # create dacpac using MSBUILD
-      - name: Build Database project
-        run: |
-          msbuild.exe sqlproject/sqlproject.sln /p:Configuration=Release
-     # - name: List Directory Content
-     #   run: |
-     #    Get-ChildItem -Path "${{ github.workspace }}sqldbproj\sqldbproj\sqlproject\sqlproject\bin\Release\"
-      - name: Create Artifacts Directory
-        run: |
-          New-Item -ItemType Directory -Force -Path ${{ github.workspace }}\artifacts
-      - name: Copy Artifacts
-        run: |
-          $sourcePath = "${{ github.workspace }}\sqlproject\sqlproject\bin\Release"
-          $destinationPath = ${{ github.workspace }}\artifacts
-          Copy-Item -Path $sourcePath -Destination $destinationPath
-      - name: Upload Build Artifacts
-        uses: actions/upload-artifact@v2
-        with:
-          name: DACPAC-Artifacts
-          path: ${{ github.workspace }}\artifacts
-     
-     # - name: Upload Artifacts
-     #   uses: actions/upload-artifact@v2
-     #   with:
-     #     name: DACPAC
-     #    path: ${{ github.workspace }}/sqlproject/*.dacpac
-          
-      #- name: List Build Directory Contents
-      #  run: |
-      #      Get-ChildItem -Path "${{ github.workspace }}/sqlproject/bin/Release/" -Recurse
+   #publish build artifact (dacpac) back to github
+
+   - name: publish build artifacts back to GitHub
+     uses: actions/upload-artifact@master
+     with:
+     name: db
+     path: src\WestWind\bin\Debug\WestWind.dacpac
+
