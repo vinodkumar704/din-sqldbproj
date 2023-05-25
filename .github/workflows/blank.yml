@@ -36,6 +36,8 @@ jobs:
         run: |
           $sourcePath = "${{ github.workspace }}/sqlproject/bin/Release/*.dacpac"
           $destinationPath = "${{ github.workspace }}/artifacts/"
+          New-Item -ItemType Directory -Force -Path $destinationPath
+          Copy-Item -Path $sourcePath -Destination $destinationPath
      # - name: Upload Artifacts
      #   uses: actions/upload-artifact@v2
      #   with:
