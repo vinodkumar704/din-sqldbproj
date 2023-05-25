@@ -31,7 +31,7 @@ jobs:
       # create dacpac using MSBUILD
       - name: Build Database project
         run: |
-          msbuild.exe AzureSQLDB.sqlproj /p:Configuration=Release
+          msbuild.exe sqlproject/sqlproject.sln /p:Configuration=Release
       # Publish artifact
       - uses: actions/upload-artifact@v3.1.2
         with:
