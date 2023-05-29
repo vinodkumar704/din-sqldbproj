@@ -64,4 +64,4 @@ jobs:
           $dbName = "newdb890"
           $dacpacPath = "${{ github.workspace }}\downloaded_artifacts\sqlproject.dacpac"
 
-          & "C:\Program Files (x86)\Microsoft SQL Server\150\DAC\bin\sqlpackage.exe" /Action:Publish /SourceFile:$dacpacPath /TargetServerName:$serverName /TargetDatabaseName:$dbName /TargetUser:$userName /TargetPassword:$password /p:BlockWhenDriftDetected=False
+          & "C:/Program Files (x86)/Microsoft SQL Server/150/DAC/bin/sqlpackage.exe" /Action:Publish /SourceFile:$dacpacPath /TargetServerName:$serverName /TargetDatabaseName:$dbName /TargetUser:$userName /TargetPassword:$password /p:BlockWhenDriftDetected=False
