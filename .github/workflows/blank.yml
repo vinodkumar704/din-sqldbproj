@@ -53,7 +53,7 @@ jobs:
          
       - name: Install SQLPackage
         run: |
-          (New-Object System.Net.WebClient).DownloadFile("https://download.microsoft.com/download/0/2/9/0293E37B-263C-49CC-8F58-56AB49C44A74/DacFramework.msi", "C:\Windows\Temp\DacFramework.msi")
+          Invoke-WebRequest -Uri "https://go.microsoft.com/fwlink/?linkid=2128310" -OutFile "C:\Windows\Temp\DacFramework.msi"
           Start-Process "msiexec" -ArgumentList "/I C:\Windows\Temp\DacFramework.msi /quiet /norestart" -Wait
 
       #- name: Deploy Database
