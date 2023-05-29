@@ -28,7 +28,7 @@ jobs:
           
       - name: Copy Artifacts
         run: |
-          $sourcePath = "${{ github.workspace }}\sqlproject\Database2\bin\Release"
+          $sourcePath = "${{ github.workspace }}\sqldbproj\sqlproject\Database2\bin\Release"
           $destinationPath = (Join-Path ${{ github.workspace }} 'artifacts')
           Copy-Item -Path "$sourcePath\*" -Destination $destinationPath -Recurse -Force
           
