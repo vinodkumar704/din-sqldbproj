@@ -1,0 +1,10 @@
+5/30/2023 12:41:56 AM	This log contains information about the import schema operation into project 'Database2' on computer 'DINESH' by user 'dines'.
+5/30/2023 12:41:56 AM	Deserializing model
+5/30/2023 12:41:56 AM	Resolving model
+5/30/2023 12:41:56 AM	Visiting imported model for types
+5/30/2023 12:41:56 AM	Scanning project for duplicate elements
+5/30/2023 12:41:56 AM	Finished duplicate element processing
+5/30/2023 12:41:57 AM	Processing extra files
+5/30/2023 12:41:57 AM	Finished importing Data-tier Application file.
+5/30/2023 12:41:57 AM	A summary of the import was saved to the following location: C:\Users\dines\source\repos\Database2\Database2\Import Schema Logs\Database2_20230529071156.log
+5/30/2023 12:41:57 AM	Click Finish to continue...
