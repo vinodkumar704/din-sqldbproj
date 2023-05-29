@@ -17,6 +17,9 @@ jobs:
       
       - name: Add msbuild to PATH
         uses: microsoft/setup-msbuild@v1.3.1
+        with:
+          msbuild-architecture: x86
+          vswhere_path: 'C:\Program Files (x86)\microsoft visual studio\installer\vswhere.exe'
         
      # - name: Build Database project
      #   run: |
