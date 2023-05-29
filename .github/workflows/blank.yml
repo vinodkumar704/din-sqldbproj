@@ -18,9 +18,9 @@ jobs:
      # - name: Add msbuild to PATH
      #   uses: microsoft/setup-msbuild@v1.3.1
         
-    #  - name: Build Database project
-    #    run: |
-    #      msbuild.exe sqlproject/Database2.sln /p:Configuration=Release
+      - name: Build Database project
+        run: |
+          msbuild.exe sqlproject/Database2.sln /p:Configuration=Release
           
     #  - name: Create Artifacts Directory
     #    run: |
