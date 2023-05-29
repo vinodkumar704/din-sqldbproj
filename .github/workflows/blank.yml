@@ -15,45 +15,45 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       
-      - name: Add msbuild to PATH
-        uses: microsoft/setup-msbuild@v1.3.1
+    #  - name: Add msbuild to PATH
+    #    uses: microsoft/setup-msbuild@v1.3.1
         
-      - name: Build Database project
-        run: |
-          msbuild.exe sqlproject/Database2.sln /p:Configuration=Release
+    #  - name: Build Database project
+    #   run: |
+    #      msbuild.exe sqlproject/Database2.sln /p:Configuration=Release
           
-      - name: Create Artifacts Directory
-        run: |
-          New-Item -ItemType Directory -Force -Path (Join-Path ${{ github.workspace }} 'artifacts')
+    #  - name: Create Artifacts Directory
+    #    run: |
+    #      New-Item -ItemType Directory -Force -Path (Join-Path ${{ github.workspace }} 'artifacts')
           
-      - name: Copy Artifacts
-        run: |
-          $sourcePath = "${{ github.workspace }}\sqlproject\Database2\bin\Release"
-          $destinationPath = (Join-Path ${{ github.workspace }} 'artifacts')
-          Copy-Item -Path "$sourcePath\*" -Destination $destinationPath -Recurse -Force
+    #  - name: Copy Artifacts
+    #    run: |
+    #      $sourcePath = "${{ github.workspace }}\sqlproject\Database2\bin\Release"
+    #      $destinationPath = (Join-Path ${{ github.workspace }} 'artifacts')
+    #      Copy-Item -Path "$sourcePath\*" -Destination $destinationPath -Recurse -Force
           
-      - name: List Artifacts Content
-        run: |
-          Get-ChildItem -Path (Join-Path ${{ github.workspace }} 'artifacts') -Recurse
+    #  - name: List Artifacts Content
+    #    run: |
+    #      Get-ChildItem -Path (Join-Path ${{ github.workspace }} 'artifacts') -Recurse
           
-      - name: Upload Build Artifacts
-        uses: actions/upload-artifact@v2
-        with:
-          name: Dacpaclogs
-          path: ${{ github.workspace }}\artifacts\
+    #  - name: Upload Build Artifacts
+    #    uses: actions/upload-artifact@v2
+    #    with:
+    #      name: Dacpaclogs
+    #      path: ${{ github.workspace }}\artifacts\
           
           
-      - name: Download a Build Artifact
-        uses: actions/download-artifact@v2.1.1
-        with:
-      # Artifact name
-         name: Dacpaclogs
-      # Destination path
-         path: ${{ github.workspace }}/downloaded_artifacts
+    #  - name: Download a Build Artifact
+    #    uses: actions/download-artifact@v2.1.1
+    #    with:
+    #  # Artifact name
+    #     name: Dacpaclogs
+    #  # Destination path
+    #     path: ${{ github.workspace }}/downloaded_artifacts
          
       - name: Install SQLPackage
         run: |
-          (New-Object System.Net.WebClient).DownloadFile("https://download.microsoft.com/download/0/6/E/06E72A96-BE10-4A9F-B527-BD8FAE900B75/DacFramework.msi", "C:\Windows\Temp\DacFramework.msi")
+          (New-Object System.Net.WebClient).DownloadFile("<latest_url>", "C:\Windows\Temp\DacFramework.msi")
           Start-Process "msiexec" -ArgumentList "/I C:\Windows\Temp\DacFramework.msi /quiet /norestart" -Wait
 
       #- name: Deploy Database
