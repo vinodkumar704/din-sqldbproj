@@ -48,4 +48,4 @@ jobs:
       # Artifact name
          name: Dacpaclogs
       # Destination path
-         path: ${{ buildlogs }}
+         path: ${{ github.workspace }}/downloaded_artifacts
