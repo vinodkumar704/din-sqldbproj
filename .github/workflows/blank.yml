@@ -25,9 +25,9 @@ jobs:
         run: |
           msbuild.exe sqlproject/Database2.sln /p:Configuration=Release
           
-    #  - name: Create Artifacts Directory
-    #    run: |
-    #      New-Item -ItemType Directory -Force -Path (Join-Path ${{ github.workspace }} 'artifacts')
+      - name: Create Artifacts Directory
+        run: |
+          New-Item -ItemType Directory -Force -Path (Join-Path ${{ github.workspace }} 'artifacts')
           
     #  - name: Copy Artifacts
     #    run: |
