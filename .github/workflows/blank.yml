@@ -52,6 +52,7 @@ jobs:
          
       - name: Install SQLPackage
         run: |
+          Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process -Force
           [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
           Invoke-WebRequest -Uri "https://go.microsoft.com/fwlink/?linkid=2108816" -OutFile "sqlpackage.zip" -ErrorAction Continue
           Expand-Archive -Path "sqlpackage.zip" -DestinationPath ".\sqlpackage"
