@@ -49,3 +49,8 @@ jobs:
          name: Dacpaclogs
       # Destination path
          path: ${{ github.workspace }}/downloaded_artifacts
+         
+      - name: Install SQLPackage
+        run: |
+          Invoke-WebRequest -Uri "https://go.microsoft.com/fwlink/?linkid=2108816" -OutFile "sqlpackage.zip"
+          Expand-Archive -Path "sqlpackage.zip" -DestinationPath ".\sqlpackage"
