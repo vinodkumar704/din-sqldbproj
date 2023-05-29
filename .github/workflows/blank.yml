@@ -51,19 +51,15 @@ jobs:
       # Destination path
          path: ${{ github.workspace }}/downloaded_artifacts
          
-      #- name: Install SQLPackage
-      #  run: |
-      #    Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process -Force
-      #    [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-      #    Invoke-WebRequest -Uri "https://download.microsoft.com/download/4/1/A/41AD9910-C3A5-4798-B418-EF5DDC9DBA59/ENU/ssdt-setup-ENU.exe" -OutFile "ssdt-setup.exe"
-      #    Start-Process -FilePath ".\ssdt-setup.exe" -ArgumentList "/Quiet /NoRestart /Layout .\sqlpackage" -Wait
-      #    Expand-Archive -Path ".\sqlpackage\payload\*
-      #    \Microsoft.Data.Tools.Msbuild\lib\net40\*.zip" -DestinationPath ".\sqlpackage\unzipped" -Force
-
-      - name: Deploy Database
+      - name: Install SQLPackage
         run: |
-          $serverName = "sql1987.database.windows.net"
-          $userName = "testaccount"
-          $password = "admin@1234"
-          $dbName = "newdb890"
-          $dacpacPath = "${{ github.workspace }}\downloaded_artifacts\sqlproject.dacpac"
+          (New-Object System.Net.WebClient).DownloadFile("https://download.microsoft.com/download/0/6/E/06E72A96-BE10-4A9F-B527-BD8FAE900B75/DacFramework.msi", "C:\Windows\Temp\DacFramework.msi")
+          Start-Process "msiexec" -ArgumentList "/I C:\Windows\Temp\DacFramework.msi /quiet /norestart" -Wait
+
+      #- name: Deploy Database
+      #  run: |
+      #    $serverName = "sql1987.database.windows.net"
+      #    $userName = "testaccount"
+      #    $password = "admin@1234"
+      #    $dbName = "newdb890"
+      #   $dacpacPath = "${{ github.workspace }}\downloaded_artifacts\sqlproject.dacpac"
