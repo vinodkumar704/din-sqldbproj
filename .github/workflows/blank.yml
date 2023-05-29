@@ -20,7 +20,7 @@ jobs:
         
       - name: Build Database project
         run: |
-          msbuild.exe sqlproject/Database2/Database2.sln /p:Configuration=Release
+          msbuild.exe sqlproject/Database2.sln /p:Configuration=Release
           
       - name: Create Artifacts Directory
         run: |
