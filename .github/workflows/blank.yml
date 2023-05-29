@@ -63,3 +63,5 @@ jobs:
           $password = "admin@1234"
           $dbName = "newdb890"
           $dacpacPath = "${{ github.workspace }}\downloaded_artifacts\sqlproject.dacpac"
+          
+          sqlpackage.exe /Action:Publish /SourceFile:$dacpacPath /TargetServerName:$serverName /TargetDatabaseName:$dbName /TargetUser:$userName /TargetPassword:$password /p:BlockWhenDriftDetected=False
