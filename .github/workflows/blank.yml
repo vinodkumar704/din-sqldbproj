@@ -35,36 +35,36 @@ jobs:
           $destinationPath = (Join-Path ${{ github.workspace }} 'artifacts')
           Copy-Item -Path "$sourcePath\*" -Destination $destinationPath -Recurse -Force
           
-      - name: List Artifacts Content
-        run: |
-          Get-ChildItem -Path (Join-Path ${{ github.workspace }} 'artifacts') -Recurse
+     # - name: List Artifacts Content
+     #   run: |
+     #     Get-ChildItem -Path (Join-Path ${{ github.workspace }} 'artifacts') -Recurse
           
-      - name: Upload Build Artifacts
-        uses: actions/upload-artifact@v2
-        with:
-          name: Dacpaclogs
-          path: ${{ github.workspace }}\artifacts\
+     # - name: Upload Build Artifacts
+     #   uses: actions/upload-artifact@v2
+     #   with:
+     #     name: Dacpaclogs
+     #     path: ${{ github.workspace }}\artifacts\
           
           
-      - name: Download a Build Artifact
-        uses: actions/download-artifact@v2.1.1
-        with:
+    #  - name: Download a Build Artifact
+    #    uses: actions/download-artifact@v2.1.1
+    #    with:
       # Artifact name
-         name: Dacpaclogs
+    #     name: Dacpaclogs
       # Destination path
-         path: ${{ github.workspace }}/downloaded_artifacts
+    #     path: ${{ github.workspace }}/downloaded_artifacts
          
-      - name: Install SQLPackage
-        run: |
-          Invoke-WebRequest -Uri "https://go.microsoft.com/fwlink/?linkid=2128310" -OutFile "C:\Windows\Temp\DacFramework.msi"
-          Start-Process "msiexec" -ArgumentList "/I C:\Windows\Temp\DacFramework.msi /quiet /norestart" -Wait
+    #  - name: Install SQLPackage
+    #    run: |
+    #      Invoke-WebRequest -Uri "https://go.microsoft.com/fwlink/?linkid=2128310" -OutFile "C:\Windows\Temp\DacFramework.msi"
+    #      Start-Process "msiexec" -ArgumentList "/I C:\Windows\Temp\DacFramework.msi /quiet /norestart" -Wait
 
-      - name: Deploy Database
-        run: |
-          $serverName = "sql1987.database.windows.net"
-          $userName = "testaccount"
-          $password = "admin@1234"
-          $dbName = "newdb890"
-          $dacpacPath = "${{ github.workspace }}\downloaded_artifacts\sqlproject.dacpac"
+    #  - name: Deploy Database
+    #    run: |
+    #      $serverName = "sql1987.database.windows.net"
+    #      $userName = "testaccount"
+    #      $password = "admin@1234"
+    #      $dbName = "newdb890"
+    #      $dacpacPath = "${{ github.workspace }}\downloaded_artifacts\sqlproject.dacpac"
 
-          & "C:/Program Files/Microsoft SQL Server/160/DAC/bin/sqlpackage.exe" /Action:Publish /SourceFile:$dacpacPath /TargetServerName:$serverName /TargetDatabaseName:$dbName /TargetUser:$userName /TargetPassword:$password /p:BlockWhenDriftDetected=False
+     #     & "C:/Program Files/Microsoft SQL Server/160/DAC/bin/sqlpackage.exe" /Action:Publish /SourceFile:$dacpacPath /TargetServerName:$serverName /TargetDatabaseName:$dbName /TargetUser:$userName /TargetPassword:$password /p:BlockWhenDriftDetected=False
