@@ -20,7 +20,7 @@ jobs:
         
       - name: Build Database project
         run: |
-          msbuild.exe sqlproject/sqlproject.sln /p:Configuration=Release
+          msbuild.exe sqlproject/Database2/Database2.sln /p:Configuration=Release
           
       - name: Create Artifacts Directory
         run: |
@@ -28,7 +28,7 @@ jobs:
           
       - name: Copy Artifacts
         run: |
-          $sourcePath = "${{ github.workspace }}\sqlproject\sqlproject\bin\Release"
+          $sourcePath = "${{ github.workspace }}\sqlproject\Database2\bin\Release"
           $destinationPath = (Join-Path ${{ github.workspace }} 'artifacts')
           Copy-Item -Path "$sourcePath\*" -Destination $destinationPath -Recurse -Force
           
