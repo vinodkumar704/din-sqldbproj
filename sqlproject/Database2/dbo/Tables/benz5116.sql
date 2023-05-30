@@ -6,5 +6,5 @@
     [benzcg] NVARCHAR (30) NULL,
     [benzcg2345] NVARCHAR (30) NULL,
 );**/
-insert into benz5116 values(1,'abc','def','ghi','jkl');
+insert into benz.dbo.benz5116 values(1,'abc','def','ghi','jkl');
 
