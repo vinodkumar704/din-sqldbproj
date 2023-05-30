@@ -42,46 +42,5 @@
 			<Property Name="QueryStoreStaleQueryThreshold" Value="367" />
 			<Property Name="MaxDop" Value="0" />
 		</Element>
-		<Element Type="SqlTable" Name="[dbo].[benz]">
-			<Property Name="IsAnsiNullsOn" Value="True" />
-			<Relationship Name="Columns">
-				<Entry>
-					<Element Type="SqlSimpleColumn" Name="[dbo].[benz].[benzId]">
-						<Relationship Name="TypeSpecifier">
-							<Entry>
-								<Element Type="SqlTypeSpecifier">
-									<Relationship Name="Type">
-										<Entry>
-											<References ExternalSource="BuiltIns" Name="[int]" />
-										</Entry>
-									</Relationship>
-								</Element>
-							</Entry>
-						</Relationship>
-					</Element>
-				</Entry>
-				<Entry>
-					<Element Type="SqlSimpleColumn" Name="[dbo].[benz].[benzname]">
-						<Relationship Name="TypeSpecifier">
-							<Entry>
-								<Element Type="SqlTypeSpecifier">
-									<Property Name="Length" Value="30" />
-									<Relationship Name="Type">
-										<Entry>
-											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
-										</Entry>
-									</Relationship>
-								</Element>
-							</Entry>
-						</Relationship>
-					</Element>
-				</Entry>
-			</Relationship>
-			<Relationship Name="Schema">
-				<Entry>
-					<References ExternalSource="BuiltIns" Name="[dbo]" />
-				</Entry>
-			</Relationship>
-		</Element>
 	</Model>
 </DataSchemaModel>

@@ -1,8 +1,1 @@
-/**comment**/
-CREATE TABLE [dbo].[benz] (
-    [benzId]   INT           NULL,
-    [benzname] NVARCHAR (30) NULL
-);
-
-
-
+﻿insert into benz5116 values(1,'abc','def','ghi','jkl');
