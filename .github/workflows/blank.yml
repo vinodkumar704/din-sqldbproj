@@ -1,12 +1,12 @@
 #This is sql CI.
 name: CI
 
-on:
+#on:
 #  push:
 #    branches: [ "main" ]
 #  pull_request:
 #    branches: [ "main" ]
-#  workflow_dispatch:
+  workflow_dispatch:
 
 jobs:
   build:
@@ -64,7 +64,7 @@ jobs:
           $serverName = "sql1987.database.windows.net"
           $userName = "testaccount"
           $password = "admin@1234"
-          $dbName = "newdb890"
+          $dbName = "benz"
           $dacpacPath = "${{ github.workspace }}\downloaded_artifacts\Database2.dacpac"
 
           & "C:/Program Files/Microsoft SQL Server/160/DAC/bin/sqlpackage.exe" /Action:Publish /SourceFile:$dacpacPath /TargetServerName:$serverName /TargetDatabaseName:$dbName /TargetUser:$userName /TargetPassword:$password /p:BlockWhenDriftDetected=False
