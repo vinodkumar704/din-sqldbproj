@@ -60,6 +60,6 @@
     <Folder Include="dbo\Tables\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="dbo\Tables\benz.sql" />
+    <PostDeploy Include="dbo\Tables\benz.sql" />
   </ItemGroup>
 </Project>
