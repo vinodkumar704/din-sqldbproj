@@ -1,11 +1,7 @@
 /**comment**/
 CREATE TABLE [dbo].[benz5116] (
     [benzId]   INT           NULL,
-    [benzname] NVARCHAR (30) NULL
+    [benzname] NVARCHAR (30) NULL,
+    [benztag] NVARCHAR (30) NULL
 );
-SET TABLE [dbo].[benz5116] (
-    [benzId]   INT           NULL,
-    [benzname] NVARCHAR (30) NULL
-);
-
 
