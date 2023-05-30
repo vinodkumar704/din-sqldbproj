@@ -3,3 +3,5 @@
     [benzname] NVARCHAR (30) NULL
 );
 
+/**comment**/
+
