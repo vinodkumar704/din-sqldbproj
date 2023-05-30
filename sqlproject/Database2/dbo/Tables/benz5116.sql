@@ -4,5 +4,6 @@ CREATE TABLE [dbo].[benz5116] (
     [benzname] NVARCHAR (30) NULL,
     [benztag] NVARCHAR (30) NULL,
     [benzcg] NVARCHAR (30) NULL,
+    [benzcg2345] NVARCHAR (30) NULL,
 );
 
