@@ -1,5 +1,5 @@
 /**comment**/
-CREATE TABLE [dbo].[benz12] (
+CREATE TABLE [dbo].[benz] (
     [benzId]   INT           NULL,
     [benzname] NVARCHAR (30) NULL
 );
