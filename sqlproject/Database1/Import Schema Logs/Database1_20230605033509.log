@@ -1,0 +1,10 @@
+05-06-2023 21:05:09	This log contains information about the import schema operation into project 'Database1' on computer 'BVIMUMLAP-265' by user 'vinod.chemudugunta'.
+05-06-2023 21:05:09	Deserializing model
+05-06-2023 21:05:09	Resolving model
+05-06-2023 21:05:09	Visiting imported model for types
+05-06-2023 21:05:09	Scanning project for duplicate elements
+05-06-2023 21:05:09	Finished duplicate element processing
+05-06-2023 21:05:09	Processing extra files
+05-06-2023 21:05:10	Finished importing Data-tier Application file.
+05-06-2023 21:05:10	A summary of the import was saved to the following location: C:\Users\vinod.chemudugunta\source\repos\Database1\Database1\Import Schema Logs\Database1_20230605033509.log
+05-06-2023 21:05:10	Click Finish to continue...
