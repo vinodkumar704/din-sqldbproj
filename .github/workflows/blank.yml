@@ -10,7 +10,7 @@ on:
 
 jobs:
   build:
-    runs-on: self-hosted
+    runs-on: windows-latest
 
     steps:
       - uses: actions/checkout@v3
@@ -23,7 +23,7 @@ jobs:
         
       - name: Build Database project
         run: |
-          msbuild.exe sqlproject/Database2.sln /p:Configuration=Release
+          msbuild.exe sqlproject/Database1.sln /p:Configuration=Release
           
       - name: Create Artifacts Directory
         run: |
@@ -31,7 +31,7 @@ jobs:
           
       - name: Copy Artifacts
         run: |
-          $sourcePath = "${{ github.workspace }}\sqlproject\Database2\bin\Release"
+          $sourcePath = "${{ github.workspace }}\sqlproject\Database1\bin\Release"
           $destinationPath = (Join-Path ${{ github.workspace }} 'artifacts')
           Copy-Item -Path "$sourcePath\*" -Destination $destinationPath -Recurse -Force
           
@@ -64,7 +64,7 @@ jobs:
           $serverName = "vkch.database.windows.net"
           $userName = "testaccount"
           $password = "admin@1234"
-          $dbName = "vinod"
-          $dacpacPath = "${{ github.workspace }}\downloaded_artifacts\Database2.dacpac"
+          $dbName = "mysqldb-vkch"
+          $dacpacPath = "${{ github.workspace }}\downloaded_artifacts\Database1.dacpac"
 
           & "C:/Program Files/Microsoft SQL Server/160/DAC/bin/sqlpackage.exe" /Action:Publish /SourceFile:$dacpacPath /TargetServerName:$serverName /TargetDatabaseName:$dbName /TargetUser:$userName /TargetPassword:$password /p:BlockWhenDriftDetected=False
