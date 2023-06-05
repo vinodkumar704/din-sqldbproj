@@ -1,4 +1,4 @@
-#This is sql CI.
+#This is sql CI
 name: CI
 
 on:
