@@ -2,10 +2,10 @@
 name: CI
 
 on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+ # push:
+ #   branches: [ "main" ]
+ # pull_request:
+ #   branches: [ "main" ]
   workflow_dispatch:
 
 jobs:
@@ -61,10 +61,10 @@ jobs:
 
       - name: Deploy Database
         run: |
-          $serverName = "sql1987.database.windows.net"
+          $serverName = "vkch.database.windows.net"
           $userName = "testaccount"
           $password = "admin@1234"
-          $dbName = "benz"
+          $dbName = "vinod"
           $dacpacPath = "${{ github.workspace }}\downloaded_artifacts\Database2.dacpac"
 
           & "C:/Program Files/Microsoft SQL Server/160/DAC/bin/sqlpackage.exe" /Action:Publish /SourceFile:$dacpacPath /TargetServerName:$serverName /TargetDatabaseName:$dbName /TargetUser:$userName /TargetPassword:$password /p:BlockWhenDriftDetected=False
